@@ -1,27 +1,27 @@
 const chai = require('chai');
-const expect = chai.expect;
+
+const { expect } = chai;
 
 const Vampire = require('../vampire.js');
 
-describe("Vampire", function() {
-
+describe('Vampire', () => {
   let rootVampire;
-  beforeEach( function() {
-    rootVampire = new Vampire("root");
+  beforeEach(() => {
+    rootVampire = new Vampire('root');
   });
 
-  describe("closestCommonAncestor", function() {
-
-    let offspring1, offspring2, offspring3, offspring4, offspring5, offspring6, offspring7, offspring8;
+  describe('closestCommonAncestor', () => {
+    let offspring1; let offspring2; let offspring3; let offspring4; let offspring5; let offspring6; let offspring7; let
+      offspring8;
     beforeEach(() => {
-      offspring1 = new Vampire("a");
-      offspring2 = new Vampire("b");
-      offspring3 = new Vampire("c");
-      offspring4 = new Vampire("d");
-      offspring5 = new Vampire("e");
-      offspring6 = new Vampire("f");
-      offspring7 = new Vampire("g");
-      offspring8 = new Vampire("h");
+      offspring1 = new Vampire('a');
+      offspring2 = new Vampire('b');
+      offspring3 = new Vampire('c');
+      offspring4 = new Vampire('d');
+      offspring5 = new Vampire('e');
+      offspring6 = new Vampire('f');
+      offspring7 = new Vampire('g');
+      offspring8 = new Vampire('h');
 
       rootVampire.addOffspring(offspring1);
       rootVampire.addOffspring(offspring2);
@@ -33,10 +33,10 @@ describe("Vampire", function() {
       offspring2.addOffspring(offspring8);
     });
 
-    it("should be the root vampire for any vampire and the root vampire", () => {
+    it('should be the root vampire for any vampire and the root vampire', () => {
       expect(rootVampire.closestCommonAncestor(offspring2).name).to.equal(rootVampire.name);
       expect(rootVampire.closestCommonAncestor(offspring7).name).to.equal(rootVampire.name);
-    })
+    });
 
     it("should be the root vampire for first two offspring", () => {
       expect(offspring1.closestCommonAncestor(offspring2).name).to.equal(rootVampire.name);
